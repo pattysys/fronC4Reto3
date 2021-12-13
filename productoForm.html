@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
+    <title>formulario de usurio</title>
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css" />
+    <link rel="stylesheet" href="css/inicio.css">
+    <link href="css/formulario.css" rel="stylesheet">
+    <script
+     src="https://code.jquery.com/jquery-3.6.0.min.js"
+     integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+     crossorigin="anonymous"></script>
+    <script src="js/productos.js"></script>
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark mb-4">
+        <div class="container-fluid">
+            <img src="img/logo.jpeg" alt="" width="25" height="25" class="d-inline-block align-text-center">
+            <a class="navbar-brand" href="#">Zorrillo LTDA</a>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="userform.html">Registro Administradores y Asesores</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="listadoUsers.html">Listado de usuarios</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="productoForm.html">Registro Productos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="listadoProductos.html">Listado de productos</a>
+                    </li>
+    
+                </ul>
+            </div>
+        </div>
+    </nav>
+ 
+
+    <section id="registro admins">
+        <form class="formulario" id="resultado1">
+            <fieldset>
+                <legend>Registro de Productos</legend>                   
+                <div id="formato5" class="contenedor-campos">
+                    <div class="campo">
+                        <label>Reference </label>
+                        <input class="form-control m-3"
+                               style="width: 18em" 
+                               type="text" 
+                               id="reference" 
+                               name="reference" 
+                               placeholder="Referencia" 
+                               required>
+                    </div>
+                    <div class="campo">        
+                        <label>Marca</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="brand" name="brand" placeholder="Marca" required>
+                    </div>
+                    <div class="campo">
+                        <label>Categoria</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="category" name="category" placeholder="Categoria" required>
+                    </div>  
+                    <div class="campo">
+                        <label>Presentacion</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="presentation" name="presentation"placeholder="Presentacion" required>
+                    </div>
+                    <div class="campo">
+                        <label>Descripcion</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="description" name="description"placeholder="Descripcion" required>
+                    </div>
+                    <div class="campo"> 
+                        <label>Disponibilidad</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="availability" name="availability" placeholder="Disponibilidad" required>
+                    </div>
+                    <div class="campo">
+                        <label>Precio</label>
+                        <input class="form-control m-3" style="width: 18em" type="number" id="price" name="price" placeholder="Precio" required>
+                    </div>
+                    <div class="campo">
+                        <label>Cantidad</label>
+                        <input class="form-control m-3" style="width: 18em" type="number" id="quantity" name="quantity" placeholder="Cantidad" required>
+                    </div>
+                    <div class="campo">
+                        <label>Fotografia-URL</label>
+                        <input class="form-control m-3" style="width: 18em" type="text" id="photography" name="photography" placeholder="URL" required>
+                    </div>
+                </div>  
+
+                <button type="button" class="btn btn-primary mb-3 center" id="buttonSave" onclick="guardarInformacionProductos()" disable="false">Guardar</button>
+                <button type="button" class="btn btn-primary mb-3 center" id="buttonUpdate" onclick="actualizarInformacionProductos()"disable="true">Actualizar</button>   
+               
+            </fieldset>
+        </form>
+    </section>
+</body>
+
+</html>
