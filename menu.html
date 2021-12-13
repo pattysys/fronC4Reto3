@@ -13,14 +13,20 @@
     <link rel="stylesheet" href="css/inicio.css">
     <title>Zorrillo LTDA</title>
   </head>
-
+  <nav class="navbar navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">
+        <img src="img/logo.jpeg" alt="" width="50" height="50" class="d-inline-block align-text-center">
+        Zorrillo LTDA
+      </a>
+      <h2 id="titulo" class="text-md-center">Bienvenido</h2>
+    </div>
+  </nav>
   <body>
     <div class="container">
-      <h1 id="titulo" class="text-md-center">Bienvenido</h1>
-
       <div class="row">
         <div id="col-md-6">
-          <table class="table table-bordered border-primary">
+          <table class="table table-bordered border-primary bg-silver">
             <tr>
               <th>Nombre</th>
               <th>Email</th>
@@ -31,13 +37,12 @@
               <td id="userName"></td>
               <td id="userEmail"></td>
               <td id="userType"></td>
-              <td><a id="cerrarSession" href="#">Cerrar Sessión</a></td>
+              <td><a id="cerrarSession" href="#">Cerrar Sesión</a></td>
             </tr>
           </table>
         </div>
       </div>
 
-      <h2>Opciones disponibles</h2>
       <div id="opcionesAsesor" class="row">
         <div class="col-md-4">
           <div class="card" style="width: 18rem">

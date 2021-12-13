@@ -16,6 +16,8 @@ function pintarRespuesta(respuesta) {
         myTable += "<tr>"
             myTable+="<td>"+respuesta[i].identification+"</td>";
             myTable+="<td>"+respuesta[i].name+"</td>";
+            myTable+="<td>"+respuesta[i].birthtDay+"</td>";
+            myTable+="<td>"+respuesta[i].monthBirthtDay+"</td>";
             myTable+="<td>"+respuesta[i].address+"</td>";
             myTable+="<td>"+respuesta[i].cellPhone+"</td>";
             myTable+="<td>"+respuesta[i].email+"</td>";
@@ -79,6 +81,8 @@ function obtenerItemEspecificoUsuarios(idItem) {
             $("#id").val(item.id);
             $("#identification").val(item.identification);
             $("#name").val(item.name);
+            $("#birthtDay").val(item.birthtDay);
+            $("#monthBirthtDay").val(item.monthBirthtDay);
             $("#address").val(item.address);
             $("#cellPhone").val(item.cellPhone);
             $("#email").val(item.email);
@@ -114,6 +118,8 @@ function actualizarInformacionUsuarios() {
         id: parseInt($("#identification").val()),
         identification: $("#identification").val(),
         name: $("#name").val(),
+        birthtDay: $("#birthtDay").val(),
+        monthBirthtDay: $("#monthBirthtDay").val(),
         address: $("#address").val(),
         cellPhone: $("#cellPhone").val(),
         email: $("#email").val(),
@@ -139,6 +145,8 @@ function actualizarInformacionUsuarios() {
             $("#id").val();
             $("#identification").val();
             $("#name").val();
+            $("#birthtDay").val();
+            $("#monthBirthtDay");
             $("#address").val();
             $("#cellPhone").val();
             $("#email").val();

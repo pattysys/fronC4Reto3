@@ -5,6 +5,8 @@ function guardarInformacionUsuarios() {
     
     const identification = document.getElementById('identification');
     const name = document.getElementById('name');
+    const birthtDay = document.getElementById('birthDay');
+    const monthBirthtDay = document.getElementById('monthBirthtDay');
     const address = document.getElementById('address');
     const cellPhone = document.getElementById('cellPhone');
     const email = document.getElementById('email');
@@ -72,6 +74,8 @@ function guardarInformacionUsuarios() {
         id: parseInt($("#identification").val()),
         identification: $("#identification").val(),
         name: $("#name").val(),
+        birthtDay: $("#birthtDay").val(),
+        monthBirthtDay: $("#monthBirthtDay").val(),
         address: $("#address").val(),
         cellPhone: $("#cellPhone").val(),
         email:$("#email").val(),
@@ -117,12 +121,14 @@ function actualizarInformacionUsuarios() {
         id: parseInt($("#identification").val()),
         identification: $("#identification").val(),
         name: $("#name").val(),
+        birthtDay: $("#birthtDay").val(),
+        monthBirthtDay: $("#monthBirthtDay").val(),
         address: $("#address").val(),
         cellPhone: $("#cellPhone").val(),
-        email: $("#email").val(),
+        email:$("#email").val(),
         password: $("#password").val(),
-        zone: $("#zone").val(),
-        type: $("#type").val()
+        zone:$("#zone").val(),
+        type:$("#type").val()
         
     }
 
@@ -142,6 +148,8 @@ function actualizarInformacionUsuarios() {
             $("#id").val();
             $("#identification").val();
             $("#name").val();
+            $("#birthtDay").val();
+            $("#monthBirthtDay");
             $("#address").val();
             $("#cellPhone").val();
             $("#email").val();
@@ -183,6 +191,8 @@ function obtenerItemEspecificoUsuarios(idItem) {
             $("#id").val(item.id);
             $("#identification").val(item.identification);
             $("#name").val(item.name);
+            $("#birthtDay").val(item.birthtDay);
+            $("#monthBirthtDay").val(item.monthBirthtDay);
             $("#address").val(item.address);
             $("#cellPhone").val(item.cellPhone);
             $("#email").val(item.email);
