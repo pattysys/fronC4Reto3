@@ -5,7 +5,7 @@ function guardarInformacionUsuarios() {
     
     const identification = document.getElementById('identification');
     const name = document.getElementById('name');
-    const birthtDay = document.getElementById('birthDay');
+    const birthtDay = document.getElementById('birthtDay');
     const monthBirthtDay = document.getElementById('monthBirthtDay');
     const address = document.getElementById('address');
     const cellPhone = document.getElementById('cellPhone');
@@ -26,6 +26,19 @@ function guardarInformacionUsuarios() {
       name.focus()
       return 0;
     
+    }
+    if (birthtDay.value.length == 0) {
+        alert("Ingrese su fecha de nacimiento")
+        birthtDay.focus()
+        return 0;
+      
+    }
+    
+    if (monthBirthtDay.value.length == 0) {
+        alert("Ingrese su mes de nacimiento")
+        monthBirthtDaye.focus()
+        return 0;
+      
     }
     
     if (address.value.length == 0) {

@@ -4,7 +4,6 @@ body {
   background-color: rgb(116, 113, 113);
   background-size: cover;
   height: 90vh;
-  background-color: #5f6769;
   background-image: url("/img/fondo3.jpeg");
   
 }
@@ -15,9 +14,11 @@ body {
   border: 1px solid #9c9c9c;
   background-color: #575656;
 }
+
 #login .container #login-row #login-column #login-box #login-form {
   padding: 20px;
 }
+
 #login
   .container
   #login-row
@@ -27,18 +28,20 @@ body {
   #register-link {
   margin-top: -85px;
 }
-#contenidoTabla {
+
+.contenido-tabla {
   font-size: 25px;
+  background-color: aliceblue;
 }
 
 td {
-  font-size: 20px;
+  font-size: 15px;
   color: rgb(8, 8, 8);
   
 }
 
 th {
-  font-size: 20px;
+  font-size: 15px;
   color:rgb(40, 41, 40);
   text-align: center;
 }

@@ -38,7 +38,7 @@ function estadoInicial(){
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/supplements/all",
+        url: "http://localhost:8080/api/fragance/all",
         
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'GET',
@@ -87,7 +87,7 @@ function listarProductos(items){
                     <th>Referencia</th>
                     <th>Categoría</th>
                     <th>Marca</th>
-                    <th>Objetivo</th>
+                    <th>Presentacion</th>
                     <th>Precio</th>
                     <th colspan="2">Acciones</th>
                   </tr>`;
@@ -102,7 +102,7 @@ function listarProductos(items){
                   <td>${items[index].reference}</td>
                    <td>${items[index].category}</td>
                    <td>${items[index].brand}</td>
-                   <td>${items[index].objetivo}</td>
+                   <td>${items[index].presentation}</td>
                    <td>${items[index].price}</td>
                    <td><input type="number" id="prod_${items[index].reference}"/></td>
                    <td><button id="bot_${items[index].reference}" onclick="registrarproducto('${index}')">Agregar</button></td>
