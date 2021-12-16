@@ -1,137 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-    <link rel="stylesheet" href="css/inicio.css">
-    <title>Zorrillo LTDA</title>
-  </head>
-  <nav class="navbar navbar-light bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img src="img/logo.jpeg" alt="" width="50" height="50" class="d-inline-block align-text-center">
-        Zorrillo LTDA
-      </a>
-      <h2 id="titulo" class="text-md-center">Bienvenido</h2>
-    </div>
-  </nav>
-  <body>
-    <div class="container">
-      <div class="row">
-        <div id="col-md-6">
-          <table class="table table-bordered border-primary bg-silver contenido-tabla">
-            <tr>
-              <th>Nombre</th>
-              <th>Email</th>
-              <th>Perfil</th>
-              <th>Terminar</th>
-            </tr>
-            <tr>
-              <td id="userName"></td>
-              <td id="userEmail"></td>
-              <td id="userType"></td>
-              <td><a id="cerrarSession" href="#">Cerrar Sesión</a></td>
-            </tr>
-          </table>
-        </div>
-      </div>
 
-      <div id="opcionesAsesor" class="row">
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <p class="card-text">
-                Listado de ordenes de pedido para el asesor comercial
-              </p>
-              <ul>
-                <li><a href="ordenes.html" class="card-link">Lista de Ordenes</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <p class="card-text">
-                Listado de ordenes de pedido por fecha
-              </p>
-              <ul>
-                <li><a href="ordenes.html" class="card-link">Lista de Ordenes x fecha</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <p class="card-text">
-                Listado de ordenes de pedido por estado
-              </p>
-              <ul>
-                <li><a href="ordenes.html" class="card-link">Lista de Ordenes x estado</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <title>A tiro de AS</title>
+</head>
 
-      <div id="opcionesAdm" class="row">
-        <div class="col-md-6">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <p class="card-text">
-                Administración de Usuarios
-              </p>
-              <ul>
-                <li><a href="userform.html" class="card-link">Registro de Administradores y Coordinadores</a></li>
-                <li><a href="listadoUsers.html" class="card-link">Lista de Usuarios</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <p class="card-text">
-                Administración de Fragancias y colonias
-              </p>
-              <ul>
-                <li><a href="productoForm.html" class="card-link">Ingreso de Fragancias y Colonias</a></li>
-                <li><a href="listadoProductos.html" class="card-link">Lista de Fragancias y colonias</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>       
-      </div>
+<body>
+  <div class="container">
+    <h1 id="titulo" class="text-md-center">Bienvenido</h1>
 
-      <div id="opcionesCoord" class="row">
-        <div class="col-md-12">
-          <div class="card" style="width: 18rem">
-            <div class="card-body">
-              <p class="card-text">
-                Aprobar/Rechazar Ordenes de pedido de sus fuerza de ventas
-              </p>
-              <ul>
-                <li><a href="ordenes.html" class="card-link">Gestionar Ordenes</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>      
+    <div class="row">
+      <div id="col-md-6">
+        <table class="table table-bordered border-primary">
+          <tr>
+            <th>Nombre</th>
+            <th>Email</th>
+            <th>Perfil</th>
+            <th>Terminar</th>
+          </tr>
+          <tr>
+            <td id="userName"></td>
+            <td id="userEmail"></td>
+            <td id="userType"></td>
+            <td><a id="cerrarSession" href="#">Cerrar Sessión</a></td>
+          </tr>
+        </table>
       </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-      crossorigin="anonymous"
-    ></script>
-    <script src="js/menu.js"></script>
-  </body>
-</html
+
+    <h2>Opciones disponibles</h2>
+    <div id="opcionesAsesor" class="row">
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <p class="card-text">
+              Registrar Ordenes
+            </p>
+            <ul>
+              <li><a href="ordenes.html" class="card-link">Procesar Ordenes</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <p class="card-text">
+              Ordenes de pedido registradas por el asesor comercial
+            </p>
+            <ul>
+              <li><a href="ordenasesor.html" class="card-link">Listar Ordenes</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <p class="card-text">
+              Listado de ordenes de pedido por fecha
+            </p>
+            <ul>
+              <li><a href="ordenesfecha.html" class="card-link">Lista de Ordenes x fecha</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <p class="card-text">
+              Listado de ordenes de pedido por estado
+            </p>
+            <ul>
+              <li><a href="ordenesestado.html" class="card-link">Lista de Ordenes x estado</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="opcionesAdm" class="row">
+      <div class="col-md-6">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <p class="card-text">
+              Administración de Usuarios
+            </p>
+            <ul>
+              <li><a href="userform.html" class="card-link">Lista de Usuarios</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <p class="card-text">
+              Administración de Fragancias y colonias
+            </p>
+            <ul>
+              <li><a href="productoForm.html" class="card-link">Lista de Fragancias y colonias</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="opcionesCoord" class="row">
+      <div class="col-md-12">
+        <div class="card" style="width: 18rem">
+          <div class="card-body">
+            <p class="card-text">
+              Aprobar/Rechazar Ordenes de pedido de sus fuerza de ventas
+            </p>
+            <ul>
+              <li><a href="ordeneszona.html" class="card-link">Gestionar Ordenes de su zona</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script src="js/menu.js"></script>
+</body>
+
+</html>

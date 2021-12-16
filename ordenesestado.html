@@ -41,22 +41,23 @@
             </div>
         </div>
 
-        <div class="row mt-2">
-            <div class="col-md-12">
-                <table id="pedido" class="table table-bordered border-primary"></table>
-            </div>
-            <div class="col-md-12">
-                <button class="btn btn-primary" id="procesarOrden">Procesar Orden</button>
-            </div>
-        </div>
 
-        <div class="row">
-            <div class="col-md-12">
-                <table id="pedido" class="table table-bordered border-primary">
-
-                </table>
+        <form>
+            <div class="row mb-3  mt-5">
+                <label for="estadoOrden" class="col-sm-2 col-form-label fw-bold">Estado</label>
+                <div class="col-sm-8">
+                    <select class="form-select" id="estadoOrden">
+                        <option value="Pendiente">Pendiente</option>
+                        <option value="Aprobada">Aprobada</option>
+                        <option value="Rechazada">Rechazada</option>
+                    </select>
+                </div>
+                <div class="col-sm-2">
+                    <button type="button" class="btn btn-primary" id="consultarOrden">Consultar</button>
+                </div>
             </div>
-        </div>
+        </form>
+
 
         <div class="row">
             <!--aqui se actualizara el listado -->
@@ -64,13 +65,9 @@
 
             </div>
         </div>
-
-
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="js/listarordenes.js"></script>
-    <script src="js/util.js"></script>
+    <script src="js/ordenestado.js"></script>
 </body>
 
 </html>

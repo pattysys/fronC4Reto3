@@ -9,6 +9,12 @@ let cantidades = [];
  * Establece el aspecto inicial de la interfaz
  */
 function estadoInicial(){
+    $("#alerta").hide();
+    $("#procesarOrden").hide();
+    $("#pedido").hide();
+    $("#pedido").html("");
+    
+    
     let user = sessionStorage.getItem("user");
 
     if (user== null)
@@ -50,6 +56,7 @@ function listar() {
         // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
             //recibe el arreglo 'items' de la respuesta a la petición
+            console.log(respuesta);
             listarProductos(respuesta);
         },
 
@@ -58,12 +65,6 @@ function listar() {
         // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
             $("#alerta").html("Ocurrio un problema al ejecutar la petición..." + status);
-        },
-
-        // código a ejecutar sin importar si la petición falló o no
-        complete: function (xhr, status) {
-            $("#alerta").html("Obteniendo listado productos...");
-            $("#alerta").hide(1000);
         }
     });
 }
@@ -81,15 +82,16 @@ function listarProductos(items){
 
     productos = items;
 
-    let tabla = `<table class="table table-bordered border-primary">
+    let tabla = `<table class="table-responsive table-bordered border-primary text-nowrap">
                 <thead>
                   <tr>
                     <th>Referencia</th>
                     <th>Categoría</th>
                     <th>Marca</th>
-                    <th>Presentacion</th>
+                    <th>Descripcción</th>
                     <th>Precio</th>
-                    <th colspan="2">Acciones</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
                   </tr>`;
     
     //recorrer el arreglo de items de producto para pintarlos en la tabla
@@ -102,10 +104,10 @@ function listarProductos(items){
                   <td>${items[index].reference}</td>
                    <td>${items[index].category}</td>
                    <td>${items[index].brand}</td>
-                   <td>${items[index].presentation}</td>
+                   <td>${items[index].description}</td>
                    <td>${items[index].price}</td>
-                   <td><input type="number" id="prod_${items[index].reference}"/></td>
-                   <td><button id="bot_${items[index].reference}" onclick="registrarproducto('${index}')">Agregar</button></td>
+                   <td><input type="number" id="prod_${items[index].reference}"/ ></td>
+                   <td><button class="btn btn-success" id="bot_${items[index].reference}" onclick="registrarproducto('${index}')">Agregar</button></td>
                     </td>
                    </tr>`;     
     }
@@ -124,16 +126,29 @@ function listarProductos(items){
  * @param {*} indice posición del elemento en el arreglo de productos (productos[])
  */
  function registrarproducto(indice){
+    $("#alerta").hide();
+    
     //Obtengo la referencia del producto
     let referencia = productos[indice].reference;
 
     //el ide de la caja de datos esta formado por la palabra prod + _ + la referencia del producto
     let idCaja= `prod_${referencia}`;
-    //se utilizan para valdiar si el producto fue previamente adicionado al arreglo de productos seleccionados
+    //se utilizan para validar si el producto fue previamente adicionado al arreglo de productos seleccionados
     let index=0;
     let encontro=false;
-    //convierte en entero el dato que se ingresa en la caja de texto
+
     cantidadProducto = parseInt(document.getElementById(idCaja).value);
+    
+    if (isNaN(cantidadProducto) || cantidadProducto <= 0){
+        $("#alerta").show(500);
+        $("#alerta").html("Es necesario ingresar la cantidad, y debe ser un valor mayor a 0...");
+        document.getElementById(idCaja).focus();
+        return;
+    }else{
+        $("#procesarOrden").show();
+        //convierte en entero el dato que se ingresa en la caja de texto
+        cantidadProducto = parseInt(document.getElementById(idCaja).value);
+    }
 
     //Valido si previamente existe el producto en el arreglo de cantidades, obtiene la cantidad previa y suma la nueva cantidad
     for (index = 0; index < productosSeleccionados.length; index++) {
@@ -167,17 +182,35 @@ function pintarPedido(){
     let tabla= document.querySelector("#pedido");
     let subtotal = 0;
     tabla.innerHTML="";
+
+    let tr = document.createElement("tr")
+    let tdReference = document.createElement("td")
+    let tdPrice = document.createElement("td")
+    let tdCantidad = document.createElement("td")
+    let tdsubTotal = document.createElement("td")
+    
+    tdReference.innerHTML="Referencia";
+    tdPrice.innerHTML="Precio";
+    tdCantidad.innerHTML="Cantidad";
+    tdsubTotal.innerHTML="Subtotal";
+
+    tr.appendChild(tdReference);
+    tr.appendChild(tdPrice);
+    tr.appendChild(tdCantidad);
+    tr.appendChild(tdsubTotal);
+    tabla.appendChild(tr);
+
+
     for (let indice = 0; indice < productosSeleccionados.length; indice++) {
           
-              let tr = document.createElement("tr")
-              let tdReference = document.createElement("td")
-              let tdPrice = document.createElement("td")
-              let tdCantidad = document.createElement("td")
-              let tdsubTotal = document.createElement("td")
-              let precio = parseInt(productosSeleccionados[indice].price);
-              let cantidad = parseInt(cantidades[indice]);
+              tr = document.createElement("tr")
+              tdReference = document.createElement("td")
+              tdPrice = document.createElement("td")
+              tdCantidad = document.createElement("td")
+              tdsubTotal = document.createElement("td")
+              precio = parseInt(productosSeleccionados[indice].price);
+              cantidad = parseInt(cantidades[indice]);
               
-  
               tdReference.innerHTML = productosSeleccionados[indice].reference;
               tdPrice.innerHTML =  productosSeleccionados[indice].price;
               tdCantidad.innerHTML = cantidades[indice]
@@ -192,16 +225,88 @@ function pintarPedido(){
               subtotal = subtotal + precio * cantidad;
       }
       tr = document.createElement("tr");
-      let tdsubTotal = document.createElement("td")
-      let tdTitulo = document.createElement("td")
+      tdsubTotal = document.createElement("td")
+      tdTitulo = document.createElement("th")
       tdsubTotal.innerHTML=subtotal;
       tdTitulo.innerHTML="Total";
-      tr.appendChild(tdTitulo);
-      tr.appendChild(document.createElement("td"));
-      tr.appendChild(document.createElement("td"));
+      tr.appendChild(tdTitulo).colSpan="3";
       tr.appendChild(tdsubTotal);
       tabla.appendChild(tr);
+
+      $("#pedido").show();
+      $("#procesarOrden").show();
   }
+
+
+function procesarOrden(){
+    //obtengo del sessionStorage el objeto user, el cual corresponde al usuario autenticado
+    let user = sessionStorage.getItem("user");
+    let orderDate = new Date();
+
+    //pasar de JSON a JS
+    let userJs = JSON.parse(user);
+
+
+    let productos = {};
+    let quantities ={};
+
+
+    for (let i = 0; i < productosSeleccionados.length; i++) {
+        productos[productosSeleccionados[i].reference]=productosSeleccionados[i]; 
+        quantities[productosSeleccionados[i].reference]=cantidades[i];  
+    }
+
+    let order = {
+        registerDay: orderDate.toISOString(),
+        status: "Pendiente",
+        salesMan: userJs,
+        products: productos,
+        quantities:quantities 
+    }
+
+    let orderJson = JSON.stringify(order);
+
+    $.ajax({
+        // la URL para la petición (url: "url al recurso o endpoint")
+        url: "http://localhost:8080/api/order/new",
+        // la información a enviar
+        // (también es posible utilizar una cadena de datos)
+        //si el metodo del servicio recibe datos, es necesario definir el parametro adicional
+        data : orderJson,
+
+        // especifica el tipo de petición http: POST, GET, PUT, DELETE
+        type: 'POST',
+
+        contentType:"application/JSON",
+
+        // el tipo de información que se espera de respuesta
+        //dataType: 'json',
+
+        // código a ejecutar si la petición es satisfactoria;
+        // la respuesta es pasada como argumento a la función
+        success: function (respuesta) {
+            //escribe en la consola del desarrollador para efectos de depuración
+            $("#alerta").show(1000);
+            $("#mensaje").html("Orden de pedido procesada correctamente");
+            $("#alerta").hide(1000);
+            productosSeleccionados=[];
+            cantidades=[];
+            estadoInicial();
+            listar();
+
+            Swal.fire('Orden de pedido ' +respuesta.id + ' procesada correctamente...');
+        },
+
+        // código a ejecutar si la petición falla;
+        // son pasados como argumentos a la función
+        // el objeto de la petición en crudo y código de estatus de la petición
+        error: function (xhr, status) {
+            $("#mensajes").show(1000);
+            $("#mensajes").html("Error peticion POST..." + status );
+        }
+    });
+
+}
 //$(document).ready(function () {
 //carga la librería javascript de jquery cuando se carga la página barcos.html por completo
 //cuando carga la página html se ejecuta la función: listar()
@@ -215,6 +320,10 @@ $(document).ready(function () {
     $("#cerrarSession").click(function (){
         sessionStorage.removeItem("user");
         location.href="index.html"
+    });
+
+    $("#procesarOrden").click(function (){
+        procesarOrden();
     });
 });
 
