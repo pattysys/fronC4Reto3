@@ -1,6 +1,6 @@
 function traerInformacionProductos() {
     $.ajax({
-        url: "http://localhost:8080/api/fragance/all",
+        url: "http://129.151.101.200/api/fragance/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -50,7 +50,7 @@ function borrarInformacionProductos(referenceElemento) {
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/fragance/' + referenceElemento,
+        url: 'http://129.151.101.200/api/fragance/' + referenceElemento,
         type: 'DELETE',
         contentType: 'application/json',
 
@@ -69,7 +69,7 @@ function borrarInformacionProductos(referenceElemento) {
 function obtenerItemEspecificoProductos(referenceItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/fragance/' + referenceItem,
+        url: 'http://129.151.101.200/api/fragance/' + referenceItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -129,7 +129,7 @@ function actualizarInformacionProductos() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/fragance/update',
+        url: 'http://129.151.101.200/api/fragance/update',
         dataType: "text",
         async: false,
         data: dataToSend,

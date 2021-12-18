@@ -44,7 +44,7 @@ function estadoInicial(){
 function listar() {
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/fragance/all",
+        url: "http://129.151.101.200/api/fragance/all",
         
         // especifica el tipo de petición http: POST, GET, PUT, DELETE
         type: 'GET',
@@ -60,29 +60,21 @@ function listar() {
             listarProductos(respuesta);
         },
 
-        // código a ejecutar si la petición falla;
-        // son pasados como argumentos a la función
-        // el objeto de la petición en crudo y código de estatus de la petición
+
         error: function (xhr, status) {
             $("#alerta").html("Ocurrio un problema al ejecutar la petición..." + status);
         }
     });
 }
 
-/* 
-    Esta función se encarga de recorrer el listado de datos 'items' recibido como parametro,
-    construir una tabla html en la variable javascript 'tabla',
-    acceder al elemento elemento identificado con el id 'listado'
-    y modificar su html agregando el contenido de la variable 'tabla'.
-    
-*/
+
 function listarProductos(items){
     $("#listado").html("");
     $("#listado").show(500);
 
     productos = items;
 
-    let tabla = `<table class="table-responsive table-bordered border-primary text-nowrap">
+    let tabla = `<table class="table-responsive table-bordered border-primary">
                 <thead>
                   <tr>
                     <th>Referencia</th>
@@ -268,7 +260,7 @@ function procesarOrden(){
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: "http://localhost:8080/api/order/new",
+        url: "http://129.151.101.200/api/order/new",
         // la información a enviar
         // (también es posible utilizar una cadena de datos)
         //si el metodo del servicio recibe datos, es necesario definir el parametro adicional

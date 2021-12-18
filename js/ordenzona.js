@@ -3,9 +3,7 @@ let orders = [];
 let salesman = {};
 let oderId;
 
-/**
- * Establece el aspecto inicial de la interfaz
- */
+
 function estadoInicial() {
     $("#alerta").hide();
     $("#detalleOrden").hide();
@@ -31,31 +29,19 @@ function estadoInicial() {
     listar();
 }
 
-/**
- * Invoca servicio Web que se encarga de recuperar las ordenes x zona (corresponde a las ordenes de los vendendores cuya zona coincide con la del coordinador)
- */
 function listar() {
     $.ajax({
-        // la URL para la petición (url: "url al recurso o endpoint")
-        url: `http://localhost:8080/api/order/zona/${userZona}`,
-
-        // especifica el tipo de petición http: POST, GET, PUT, DELETE
+        
+        url: `http://129.151.101.200/api/order/zona/${userZona}`,
         type: "GET",
-
-        // el tipo de información que se espera de respuesta
         dataType: "json",
 
-        // código a ejecutar si la petición es satisfactoria;
-        // la respuesta es pasada como argumento a la función
         success: function (respuesta) {
-            //recibe el arreglo 'items' de la respuesta a la petición
+        
             console.log(respuesta);
             listarProductos(respuesta);
         },
 
-        // código a ejecutar si la petición falla;
-        // son pasados como argumentos a la función
-        // el objeto de la petición en crudo y código de estatus de la petición
         error: function (xhr, status) {
             $("#alerta").html(
                 "Ocurrio un problema al ejecutar la petición..." + status
@@ -64,10 +50,6 @@ function listar() {
     });
 }
 
-/**
- * Crea una tabla html con la información de las ordenes asociadas a la zona
- * @param {*} items elementos retornados por el ws
- */
 function listarProductos(items) {
     //almacena las ordenes
     orders = items;
@@ -86,7 +68,7 @@ function listarProductos(items) {
                     <th>Ver detalle</th>
                   </tr>`;
 
-    //recorrer el arreglo de items de producto para pintarlos en la tabla
+    
     for (let i = 0; i < orders.length; i++) {
         let orderDate = orders[i].registerDay;
         let ocurrence = orderDate.indexOf("T");
@@ -104,18 +86,12 @@ function listarProductos(items) {
             </tr>`;
     }
 
-    //cierra tabla agregando el tag adecuado
     tabla += `</thead></table>`;
 
-    //accede al elemento con id 'listado' y adiciona la tabla de datos a su html
     $("#listado").html(tabla);
     $("#listado").show(1000);
 }
 
-/**
- * Detalla la orden de pedido, según el indice o posición en el arreglo de ordenes asociadas a la zona comercial
- * @param {*} indice correspnde al indice del arreglo de ordenes en el que se encuentra la orden a detallar
- */
 function detalleOrden(indice) {
     let order = orders[indice];
     let products = [];
@@ -127,12 +103,11 @@ function detalleOrden(indice) {
 
     $("#listado").hide(500);
 
-    //recupero los productos y cantidades de producto en la orden
     products = order.products;
     quantities = order.quantities;
 
-    //construyo tabla de encabezado
-    let tabla = `<table class="table-responsive table-bordered border-primary text-nowrap">
+    
+    let tabla = `<table class="table-responsive table-bordered border-primary">
                 <thead>
                 <tr>
                     <th>Identificación</th>
@@ -159,7 +134,6 @@ function detalleOrden(indice) {
                   </tr>`;
     
 
-    //cierra tabla agregando el tag adecuado
     tabla += `</thead></table>`;
 
 
@@ -189,21 +163,16 @@ function detalleOrden(indice) {
       </tr>`;
     }
 
-    //cierra tabla agregando el tag adecuado
+ 
     tablaProductos += `</thead></table>`;
 
-    //accede al elemento con id 'listado' y adiciona la tabla de datos a su html
     $("#orden").html(tablaProductos);
     $("#detalleOrden").show(1000);
 }
 
-/**
- * Invoca a WS para actaulziar el estado de la orden
- */
 function actualizarEstadoOrden(){
     let estadoOrden = $("#estadoOrden").val();
 
-    //crea un objeto javascript
     let datos = {
         id: oderId,
         status: estadoOrden
@@ -214,7 +183,7 @@ function actualizarEstadoOrden(){
 
     $.ajax({
         // la URL para la petición (url: "url al recurso o endpoint")
-        url: `http://localhost:8080/api/order/update`,
+        url: `http://129.151.101.200/api/order/update`,
 
         // la información a enviar
         // (también es posible utilizar una cadena de datos)

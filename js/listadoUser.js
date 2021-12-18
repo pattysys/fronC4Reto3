@@ -1,6 +1,6 @@
 function traerInformacionUsuarios() {
     $.ajax({
-        url: "http://localhost:8080/api/user/all",
+        url: "http://129.151.101.200/api/user/all",
         type: "GET",
         datatype: "JSON",
         success: function (respuesta) {
@@ -51,7 +51,7 @@ function borrarInformacionUsuarios(idElemento) {
     //JSON= JavaScript Object Notation
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/user/' + idElemento,
+        url: 'http://129.151.101.200/api/user/' + idElemento,
         type: 'DELETE',
         contentType: 'application/json',
 
@@ -70,7 +70,7 @@ function borrarInformacionUsuarios(idElemento) {
 function obtenerItemEspecificoUsuarios(idItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/user/' + idItem,
+        url: 'http://129.151.101.200/api/user/' + idItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
@@ -133,7 +133,7 @@ function actualizarInformacionUsuarios() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/user/update',
+        url: 'http://129.151.101.200/api/user/update',
         dataType: "text",
         async: false,
         data: dataToSend,

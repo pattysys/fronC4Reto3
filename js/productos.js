@@ -37,7 +37,7 @@ function guardarInformacionProductos() {
             dataType: 'JSON',
             data: JSON.stringify(var2),
 
-            url: "http://localhost:8080/api/fragance/new",
+            url: "http://129.151.101.200/api/fragance/new",
 
 
             success: function (response) {
@@ -81,7 +81,7 @@ function actualizarInformacionProductos() {
     //JSON= JavaScript Object Notation
     $.ajax({
         type: "PUT",
-        url: 'http://localhost:8080/api/fragance/update',
+        url: 'http://129.151.101.200/api/fragance/update',
         dataType: "text",
         async: false,
         data: dataToSend,
@@ -123,7 +123,7 @@ function actualizarInformacionProductos() {
 function obtenerItemEspecificoProductos(referenceItem) {
     $.ajax({
         dataType: 'json',
-        url: 'http://localhost:8080/api/fragance/' + referenceItem,
+        url: 'http://129.151.101.200/api/fragance/' + referenceItem,
         type: 'GET',
         success: function (response) {
             console.log(response);
